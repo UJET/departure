@@ -73,8 +73,8 @@ module Departure
       # instead of the current adapter.
       def reconnect_with_percona
         connection_config = ActiveRecord::Base
-          .connection_config.merge(adapter: 'percona')
-        ActiveRecord::Base.establish_connection(connection_config, database: ActiveRecord::Base.connection.current_database)
+          .connection_config.merge(adapter: 'percona', database: ActiveRecord::Base.connection.current_database)
+        ActiveRecord::Base.establish_connection(connection_config)
       end
     end
   end
